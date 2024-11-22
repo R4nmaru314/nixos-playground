@@ -15,4 +15,9 @@ let
 in
 appimageTools.wrapType2 {
   inherit pname version src;
+
+  extraInstallCommands = ''
+      install -Dm444 ${appimageContents}/zen.desktop -t $out/share/applications
+      install -Dm444 ${appimageContents}/zen.png -t $out/share/pixmaps
+    '';
 }
