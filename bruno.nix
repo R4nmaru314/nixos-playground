@@ -17,7 +17,16 @@ appimageTools.wrapType2 {
   inherit pname version src;
 
   extraInstallCommands = ''
+      mv $out/bin/{${pname},bruno}
       install -Dm444 ${appimageContents}/bruno.desktop -t $out/share/applications
       install -Dm444 ${appimageContents}/bruno.png -t $out/share/pixmaps
     '';
+
+  meta = {
+    description = "Open-source IDE For exploring and testing APIs";
+    homepage = "https://www.usebruno.com";
+    license = lib.licenses.mit;
+    mainProgram = "bruno";
+    platforms = lib.platforms.linux ++ lib.platforms.darwin;
+  };
 }
